@@ -17,13 +17,12 @@ public class No2231 {
                 chars = String.valueOf(constructor).toCharArray();
             }
             for(char ch : chars){
-                System.out.println(constructor+", "+ch);
+//                System.out.println(constructor+", "+ch);
                 sum+=Integer.parseInt(String.valueOf(ch));
             }
             if(sum==num) {
                 return constructor;
             }
-
 
         }
         return 0;
@@ -33,7 +32,6 @@ public class No2231 {
         BufferedReader br = new BufferedReader(new InputStreamReader(System.in));
         String N = br.readLine();
         System.out.println(getConstructor(N));
-
 
     }
 }
