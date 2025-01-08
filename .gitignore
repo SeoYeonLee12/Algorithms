@@ -2,7 +2,8 @@
 out/
 !**/src/main/**/out/
 !**/src/test/**/out/
-.idea/sonarlint/
+.idea/sonarlint/issuestore
+.idea/sonarlint/securityhotspotstore
 
 ### Eclipse ###
 .apt_generated
