@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class N1018 {
+public class N1018_2 {
     public static int searchMin(boolean[][] input, int x, int y) {
 
         int count=0;
@@ -21,7 +21,7 @@ public class N1018 {
                 // 다음 칸은 다른 색
                 startColor= (!startColor);
             }
-            // 이전 행과 다른 색으로 시작
+            // 다음행이 아니라 이 다음부터 탐색하는 값은 다시 원래로 바꾸는 과정인 거 같음.
             startColor= (!startColor);
         }
 
