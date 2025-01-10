@@ -5,7 +5,7 @@ import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
 import java.util.StringTokenizer;
 
-public class N1018_2 {
+public class N1018 {
     public static int searchMin(boolean[][] input, int x, int y) {
 
         int count=0;
@@ -52,13 +52,16 @@ public class N1018_2 {
 
         int min = 64; //(8*8)
 
-        int result=0;
-        for(int i = 0 ; i <N-8 ;i++){
-            for(int j = 0 ; j <M-8 ;j++){
+        // 모든 8*8 체스판 탐색
+        for (int i = 0; i <= N - 8; i++) {
+            for (int j = 0; j <= M - 8; j++) {
                 min = Math.min(min, searchMin(input, i, j));
             }
         }
-        System.out.println(result);
+        bw.write(String.valueOf(min));
+        bw.flush();
+        br.close();
+        bw.close();
     }
 }
 
