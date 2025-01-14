@@ -28,7 +28,7 @@ public class N20546 {
             money += (stockPrices[3]*stock);
             stock = 0;
         }
-        return new int[] {stock, money};
+        return new int[]{stock, money};
     }
 
     public static void main(String[] args) throws IOException {
@@ -38,9 +38,9 @@ public class N20546 {
         int money = Integer.parseInt(br.readLine());
         StringTokenizer st = new StringTokenizer(br.readLine());
 
-        int stockPrice[] = new int[14];
-        for(int i = 0; i<14 ; i++){
-            stockPrice[i]= Integer.parseInt(st.nextToken());
+        int[] stockPrice = new int[14];
+        for (int i = 0; i < 14; i++) {
+            stockPrice[i] = Integer.parseInt(st.nextToken());
         }
 
         //준현 돈 저장
@@ -49,34 +49,36 @@ public class N20546 {
         // 성민 돈 저장
         int timing_money=money;
         int timingStock = 0;
-        int four_stockPrice[] = new int[4];
 
-        for(int i = 0; i<14 ; i++){
-            int [] bnpResult = BNP(bnp_money, stockPrice[i]);
-            bnpStock = bnpResult[0];
-            bnp_money= bnpResult[1];
+        // 성민이의 가격 분석 배열
+        int[] last3Days = new int[4];
 
-            if(i>=3){
-                four_stockPrice[0] = stockPrice[i-3];
-                four_stockPrice[1] = stockPrice[i-2];
-                four_stockPrice[2] = stockPrice[i-1];
-                four_stockPrice[3] = stockPrice[i];
+        for (int i = 0; i < 14; i++) {
+            int[] bnpResult = BNP(bnp_money, stockPrice[i]);
+            bnpStock += bnpResult[0];
+            bnp_money = bnpResult[1];
 
-                int timingResult[] = TIMING(timing_money, timingStock, four_stockPrice);
+            if (i >= 3) {
+                last3Days[0] = stockPrice[i-3];
+                last3Days[1] = stockPrice[i-2];
+                last3Days[2] = stockPrice[i-1];
+                last3Days[3] = stockPrice[i];
+
+                int[] timingResult = TIMING(timing_money, timingStock, last3Days);
                 timingStock = timingResult[0];
-                timing_money= timingResult[1];
+                timing_money = timingResult[1];
             }
         }
 
         // 14일 결과
-        int bnpPrice = bnp_money+bnpStock*stockPrice[13];
-        int timingPrice = timing_money+timingStock*stockPrice[13];
+        int bnpAsset = bnp_money + bnpStock * stockPrice[13];
+        int timingAsset = timing_money + timingStock * stockPrice[13];
 
-        if(bnpPrice<timingPrice){
-            bw.write("TIMING");
-        }
-        else if (bnpPrice>timingPrice) {
+        if (bnpAsset > timingAsset) {
             bw.write("BNP");
+        }
+        else if (bnpAsset < timingAsset) {
+            bw.write("TIMING");
         }
         else {
             bw.write("SAMESAME");
@@ -84,7 +86,6 @@ public class N20546 {
         bw.flush();
         bw.close();
         br.close();
-
     }
 }
 /**
