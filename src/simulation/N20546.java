@@ -5,7 +5,6 @@ import java.io.BufferedWriter;
 import java.io.IOException;
 import java.io.InputStreamReader;
 import java.io.OutputStreamWriter;
-import java.util.Arrays;
 import java.util.StringTokenizer;
 
 public class N20546 {
@@ -58,10 +57,10 @@ public class N20546 {
             bnp_money= bnpResult[1];
 
             if(i>=3){
-                four_stockPrice[0] = bnpResult[i-3];
-                four_stockPrice[1] = bnpResult[i-2];
-                four_stockPrice[2] = bnpResult[i-1];
-                four_stockPrice[3] = bnpResult[i];
+                four_stockPrice[0] = stockPrice[i-3];
+                four_stockPrice[1] = stockPrice[i-2];
+                four_stockPrice[2] = stockPrice[i-1];
+                four_stockPrice[3] = stockPrice[i];
 
                 int timingResult[] = TIMING(timing_money, timingStock, four_stockPrice);
                 timingStock = timingResult[0];
@@ -74,10 +73,10 @@ public class N20546 {
         int timingPrice = timing_money+timingStock*stockPrice[13];
 
         if(bnpPrice<timingPrice){
-            bw.write(String.valueOf(timingPrice));
+            bw.write("TIMING");
         }
         else if (bnpPrice>timingPrice) {
-            bw.write(String.valueOf(bnpPrice));
+            bw.write("BNP");
         }
         else {
             bw.write("SAMESAME");
@@ -88,3 +87,7 @@ public class N20546 {
 
     }
 }
+/**
+ * 100
+ * 10 20 23 34 55 30 22 19 12 45 23 44 34 38
+ */
