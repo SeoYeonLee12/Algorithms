@@ -29,8 +29,6 @@ public class N2579 {
             dp[2] = Math.max(score[0] + score[2], score[1] + score[2]); // 세 번째 계단
         }
 
-
-
         bw.write(findMaxScore(N-1)+"");
         bw.flush();
         bw.close();
